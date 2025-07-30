@@ -71,6 +71,16 @@ app.get('/slow', (req, res) => {
   }, delayTime);
 });
 
+// Deliberate 500 error endpoint
+app.get('/fail', (req, res) => {
+  res.status(500).send('Deliberate Server Error');
+});
+
+// Deliberate 400 error endpoint
+app.get('/bad', (req, res) => {
+  res.status(400).send('Bad Request Test');
+});
+
 // Prometheus metrics endpoint
 app.get('/metrics', async (req, res) => {
   try {
